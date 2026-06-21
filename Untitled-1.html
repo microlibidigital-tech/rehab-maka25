@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>رحاب مكة – رحلة العمر تبدأ من هنا</title>
+
+  <!-- Google Fonts: Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { cairo: ['Cairo', 'sans-serif'] },
+          colors: {
+            emerald: {
+              950: '#022c22',
+              900: '#064e3b',
+              800: '#065f46',
+              700: '#047857',
+              600: '#059669',
+            },
+            gold: {
+              DEFAULT: '#C9A84C',
+              light: '#E2C97E',
+              dark: '#A07828',
+            },
+            cream: '#FAFAF7',
+            slate: { 50: '#f8fafc' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ===================================================
+       BASE STYLES
+    =================================================== */
+    * { font-family: 'Cairo', sans-serif; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #FAFAF7;
+      color: #1a1a2e;
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===================================================
+       CUSTOM VARIABLES & UTILITIES
+    =================================================== */
+    :root {
+      --emerald: #065f46;
+      --emerald-light: #047857;
+      --gold: #C9A84C;
+      --gold-light: #E2C97E;
+      --gold-dark: #A07828;
+      --cream: #FAFAF7;
+      --text-dark: #1a1a2e;
+      --text-mid: #374151;
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+    /* ===================================================
+       NAVBAR
+    =================================================== */
+    #navbar {
+      position: fixed;
+      top: 0; right: 0; left: 0;
+      z-index: 1000;
+      background: rgba(6, 79, 59, 0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    #navbar.scrolled {
+      background: rgba(6, 79, 59, 1);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    }
+
+    .nav-logo-text {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo-text span {
+      color: var(--gold);
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.875rem;
+      padding: 0.55rem 1.3rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+      text-decoration: none;
+      display: inline-block;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(201, 168, 76, 0.4);
+    }
+
+    /* ===================================================
+       HERO SECTION
+    =================================================== */
+    #hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(
+          to bottom,
+          rgba(6, 50, 40, 0.70) 0%,
+          rgba(6, 50, 40, 0.60) 50%,
+          rgba(6, 50, 40, 0.80) 100%
+        ),
+        url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover;
+      background-position: center 40%;
+      background-repeat: no-repeat;
+    }
+
+    .hero-overlay-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.6;
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(201, 168, 76, 0.15);
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      color: var(--gold-light);
+      padding: 0.4rem 1.1rem;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 6vw, 3.6rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.35;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .hero-title .gold-word {
+      color: var(--gold);
+      position: relative;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      color: rgba(255,255,255,0.88);
+      max-width: 560px;
+      margin: 0 auto 2.2rem;
+      font-weight: 400;
+      line-height: 1.9;
+    }
+
+    /* Pulse CTA */
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, var(--gold) 0%, #b8892a 100%);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 1rem 2.2rem;
+      border-radius: 12px;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      position: relative;
+      animation: heroPulse 2.5s ease-in-out infinite;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      letter-spacing: 0.02em;
+    }
+
+    @keyframes heroPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.5); }
+      50% { box-shadow: 0 0 0 12px rgba(201,168,76,0); }
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      animation: none;
+      box-shadow: 0 8px 32px rgba(201,168,76,0.45);
+    }
+
+    .hero-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .hero-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.85);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    .hero-feature-item i {
+      color: var(--gold);
+      font-size: 0.9rem;
+    }
+
+    /* Urgency banner */
+    .urgency-strip {
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 10px;
+      padding: 0.65rem 1.3rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 1.8rem;
+      color: var(--gold-light);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .urgency-dot {
+      width: 8px; height: 8px;
+      background: #ef4444;
+      border-radius: 50%;
+      animation: blink 1.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* ===================================================
+       TRUST BADGES
+    =================================================== */
+    #trust {
+      background: #fff;
+      border-bottom: 1px solid #f0ede6;
+    }
+
+    .trust-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.75rem 1rem;
+      text-align: center;
+    }
+
+    .trust-badge-icon {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, #f0fdf4, #d1fae5);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: var(--emerald);
+      flex-shrink: 0;
+    }
+
+    .trust-badge-title {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      line-height: 1.4;
+    }
+
+    .trust-badge-sub {
+      font-size: 0.78rem;
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    /* ===================================================
+       SECTION STYLES (shared)
+    =================================================== */
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      background: linear-gradient(135deg, #fef9ec, #fdf3d0);
+      padding: 0.3rem 0.9rem;
+      border-radius: 50px;
+      margin-bottom: 0.75rem;
+      border: 1px solid #f0d98a;
+    }
+
+    .section-title {
+      font-size: clamp(1.65rem, 4vw, 2.4rem);
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title .accent { color: var(--emerald); }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: #6b7280;
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* Divider */
+    .gold-divider {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 2px;
+      margin: 1rem auto 0;
+    }
+
+    /* ===================================================
+       PACKAGES / PRICING CARDS
+    =================================================== */
+    #packages { background: var(--cream); }
+
+    .package-card {
+      background: #fff;
+      border-radius: 20px;
+      border: 1.5px solid #e8e3d8;
+      padding: 2rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .package-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(6,79,59,0.1);
+      border-color: var(--gold);
+    }
+
+    .package-card.featured {
+      border-color: var(--gold);
+      box-shadow: 0 8px 40px rgba(6,79,59,0.12);
+    }
+
+    .package-card.featured::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    }
+
+    .package-badge {
+      position: absolute;
+      top: 1.1rem;
+      left: 1.1rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      letter-spacing: 0.04em;
+    }
+
+    .package-type-icon {
+      font-size: 2rem;
+    }
+
+    .package-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .package-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+    }
+
+    .price-amount {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--emerald);
+      line-height: 1;
+    }
+
+    .price-currency {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--emerald);
+    }
+
+    .price-per {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      font-weight: 500;
+    }
+
+    .package-features {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .package-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+
+    .package-features li i {
+      color: #10b981;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      width: 16px;
+    }
+
+    .package-features li.unavailable i { color: #d1d5db; }
+    .package-features li.unavailable { color: #9ca3af; }
+
+    .package-btn {
+      display: block;
+      width: 100%;
+      padding: 0.85rem;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: 2px solid var(--emerald);
+      color: var(--emerald);
+      background: transparent;
+      transition: all 0.2s ease;
+      text-align: center;
+      letter-spacing: 0.02em;
+      margin-top: auto;
+      text-decoration: none;
+    }
+
+    .package-btn:hover,
+    .package-card.featured .package-btn {
+      background: var(--emerald);
+      color: #fff;
+    }
+
+    .package-card.featured .package-btn:hover {
+      background: var(--emerald-light);
+    }
+
+    /* ===================================================
+       FEATURES / WHY US
+    =================================================== */
+    #features { background: #fff; }
+
+    .feature-item {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+
+    .feature-icon-wrap {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, #f0fdf4, #d1fae5);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--emerald);
+      flex-shrink: 0;
+    }
+
+    .feature-text-title {
+      font-weight: 700;
+      font-size: 0.97rem;
+      color: var(--text-dark);
+      margin-bottom: 0.2rem;
+      line-height: 1.4;
+    }
+
+    .feature-text-desc {
+      font-size: 0.85rem;
+      color: #6b7280;
+      line-height: 1.7;
+    }
+
+    /* ===================================================
+       REVIEWS / TESTIMONIALS
+    =================================================== */
+    #reviews { background: var(--cream); }
+
+    .review-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 1.75rem;
+      border: 1px solid #e8e3d8;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: box-shadow 0.25s ease;
+    }
+
+    .review-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    }
+
+    .review-stars { color: #f59e0b; font-size: 0.9rem; }
+
+    .review-text {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      font-style: italic;
+      position: relative;
+      padding-right: 1rem;
+    }
+
+    .review-text::before {
+      content: '"';
+      position: absolute;
+      right: -0.2rem;
+      top: -0.4rem;
+      font-size: 3rem;
+      color: var(--gold);
+      font-family: Georgia, serif;
+      line-height: 1;
+      opacity: 0.35;
+    }
+
+    .reviewer-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+    }
+
+    .reviewer-origin {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* ===================================================
+       BOOKING FORM
+    =================================================== */
+    #booking { background: linear-gradient(160deg, #064e3b 0%, #022c22 100%); }
+
+    .form-wrap {
+      background: #fff;
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.2);
+      max-width: 620px;
+      width: 100%;
+    }
+
+    .form-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 0.3rem;
+      line-height: 1.4;
+    }
+
+    .form-subtitle {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-bottom: 1.8rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .form-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .form-label i {
+      color: var(--gold-dark);
+      font-size: 0.8rem;
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      background: #fafafa;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+      direction: rtl;
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      border-color: var(--emerald);
+      box-shadow: 0 0 0 3px rgba(6,95,70,0.1);
+      background: #fff;
+    }
+
+    .form-input::placeholder { color: #c4c9d4; }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
+
+    @media (max-width: 480px) { .form-grid { grid-template-columns: 1fr; } }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
+      color: #fff;
+      font-family: 'Cairo', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      transition: all 0.25s ease;
+      margin-top: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(37,211,102,0.4);
+    }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      text-align: center;
+      margin-top: 0.8rem;
+      line-height: 1.6;
+    }
+
+    /* Form success message (hidden by default) */
+    #formSuccess {
+      display: none;
+      background: #f0fdf4;
+      border: 1px solid #86efac;
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-align: center;
+      color: #16a34a;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* ===================================================
+       FOOTER
+    =================================================== */
+    #footer {
+      background: #0a0a1a;
+      color: #9ca3af;
+    }
+
+    .footer-logo-text {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .footer-logo-text span { color: var(--gold); }
+
+    .footer-link {
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover { color: var(--gold); }
+
+    .social-btn {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      border: 1px solid #2d3748;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9ca3af;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .social-btn:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #fff;
+    }
+
+    /* ===================================================
+       FLOATING WHATSAPP
+    =================================================== */
+    .wa-float {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      z-index: 999;
+      width: 58px; height: 58px;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.5rem;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+      animation: floatPulse 2s ease-in-out infinite;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .wa-float:hover { transform: scale(1.1); animation: none; }
+
+    @keyframes floatPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+      50% { box-shadow: 0 0 0 14px rgba(37,211,102,0); }
+    }
+
+    /* ===================================================
+       ANIMATIONS (scroll reveal)
+    =================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered children */
+    .stagger > * { transition-delay: calc(var(--i, 0) * 100ms); }
+
+    /* ===================================================
+       RESPONSIVE ADJUSTMENTS
+    =================================================== */
+    @media (max-width: 640px) {
+      .hero-features { gap: 0.75rem 1.25rem; }
+      .form-wrap { padding: 1.75rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       FLOATING WHATSAPP BUTTON
+  ============================================================ -->
+  <a href="https://wa.me/00218915072015" target="_blank" class="wa-float" aria-label="تواصل عبر واتساب">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- ============================================================
+       STICKY NAVBAR
+  ============================================================ -->
+  <nav id="navbar" role="navigation" aria-label="القائمة الرئيسية">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+
+      <!-- Logo -->
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: rgba(201,168,76,0.15); border:1px solid rgba(201,168,76,0.3);">
+          <i class="fas fa-kaaba text-base" style="color:var(--gold);"></i>
+        </div>
+        <span class="nav-logo-text">رحاب <span>مكة</span></span>
+      </div>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-6 text-sm" style="color:rgba(255,255,255,0.75);">
+        <a href="#packages" class="footer-link" style="color:rgba(255,255,255,0.75);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">الباقات</a>
+        <a href="#features" class="footer-link" style="color:rgba(255,255,255,0.75);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">مميزاتنا</a>
+        <a href="#reviews" class="footer-link" style="color:rgba(255,255,255,0.75);" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='rgba(255,255,255,0.75)'">آراء المعتمرين</a>
+      </div>
+
+      <!-- CTA Button -->
+      <a href="#booking" class="nav-cta">
+        <i class="fas fa-calendar-check" style="font-size:0.8rem;"></i>
+        احجز رحلتك الآن
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <section id="hero" role="banner">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay-pattern"></div>
+
+    <div class="hero-content text-center px-4 sm:px-6 max-w-3xl mx-auto pt-20">
+
+      <!-- Eyebrow Badge -->
+      <div class="hero-badge reveal">
+        <i class="fas fa-star" style="font-size:0.7rem;"></i>
+        موسم العمرة 1446هـ — مقاعد محدودة
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="hero-title reveal">
+        لبيك اللهم لبيك..
+        <br />
+        رحلة العمر
+        <span class="gold-word">تبدأ من هنا</span>
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="hero-subtitle reveal">
+        خطّط لرحلتك الروحية براحة تامة — فنادق 5 نجوم مطلة على الحرم، طيران مباشر، وإرشاد ديني طوال الرحلة.
+      </p>
+
+      <!-- CTA -->
+      <div class="reveal">
+        <a href="#booking" class="hero-cta">
+          <i class="fas fa-paper-plane"></i>
+          احجز مقعدك الآن
+        </a>
+      </div>
+
+      <!-- Micro features -->
+      <div class="hero-features reveal">
+        <span class="hero-feature-item"><i class="fas fa-plane"></i> طيران مباشر</span>
+        <span class="hero-feature-item"><i class="fas fa-hotel"></i> فنادق 5 نجوم</span>
+        <span class="hero-feature-item"><i class="fas fa-shield-alt"></i> مرخصون رسمياً</span>
+        <span class="hero-feature-item"><i class="fas fa-headset"></i> دعم 24/7</span>
+      </div>
+
+      <!-- Urgency Strip -->
+      <div class="urgency-strip reveal">
+        <span class="urgency-dot"></span>
+        التسجيل على وشك الإغلاق — سارع بحجز مقعدك قبل اكتمال الطاقة الاستيعابية
+      </div>
+    </div>
+
+    <!-- Scroll Cue -->
+    <div style="position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.4); animation: heroPulse 2s ease-in-out infinite;">
+      <i class="fas fa-chevron-down text-sm"></i>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       TRUST BADGES
+  ============================================================ -->
+  <section id="trust" aria-label="شهادات الثقة والترخيص">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-0 divide-x divide-x-reverse divide-gray-100">
+
+        <div class="trust-badge reveal" style="--i:0">
+          <div class="trust-badge-icon"><i class="fas fa-certificate"></i></div>
+          <div>
+            <div class="trust-badge-title">مرخصون من وزارة الحج</div>
+            <div class="trust-badge-sub">ترخيص رسمي معتمد</div>
+          </div>
+        </div>
+
+        <div class="trust-badge reveal" style="--i:1">
+          <div class="trust-badge-icon"><i class="fas fa-history"></i></div>
+          <div>
+            <div class="trust-badge-title">خبرة 15 عاماً</div>
+            <div class="trust-badge-sub">في تنظيم رحلات الحج والعمرة</div>
+          </div>
+        </div>
+
+        <div class="trust-badge reveal" style="--i:2">
+          <div class="trust-badge-icon"><i class="fas fa-headset"></i></div>
+          <div>
+            <div class="trust-badge-title">دعم وإرشاد ديني</div>
+            <div class="trust-badge-sub">على مدار الساعة 24/7</div>
+          </div>
+        </div>
+
+        <div class="trust-badge reveal" style="--i:3">
+          <div class="trust-badge-icon"><i class="fas fa-users"></i></div>
+          <div>
+            <div class="trust-badge-title">آلاف المعتمرين</div>
+            <div class="trust-badge-sub">خدمناهم بنجاح وأمان</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       PACKAGES / PRICING
+  ============================================================ -->
+  <section id="packages" class="py-20 px-4 sm:px-6" aria-label="باقات العمرة">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Section Header -->
+      <div class="text-center mb-12 reveal">
+        <span class="section-eyebrow">الباقات المتاحة</span>
+        <h2 class="section-title">اختر الباقة التي <span class="accent">تناسبك</span></h2>
+        <div class="gold-divider"></div>
+        <p class="section-subtitle mt-4">باقات متنوعة تلائم جميع الميزانيات، مع ضمان أفضل مستوى من الخدمة والراحة.</p>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger">
+
+        <!-- Card 1: Economy -->
+        <div class="package-card reveal" style="--i:0">
+          <div class="package-type-icon">✈️</div>
+          <div>
+            <div class="package-name">الباقة الاقتصادية</div>
+            <div style="font-size:0.78rem;color:#9ca3af;margin-top:0.2rem;">مناسبة لكل الميزانيات</div>
+          </div>
+          <div class="package-price">
+            <span class="price-amount">1,200</span>
+            <span class="price-currency">دينار</span>
+            <span class="price-per">/ للفرد</span>
+          </div>
+          <ul class="package-features">
+            <li><i class="fas fa-check-circle"></i> طيران مباشر ذهاباً وإياباً</li>
+            <li><i class="fas fa-check-circle"></i> إقامة فندقية 4 نجوم</li>
+            <li><i class="fas fa-check-circle"></i> نقل من والى المطار</li>
+            <li><i class="fas fa-check-circle"></i> إرشاد ديني متخصص</li>
+            <li><i class="fas fa-check-circle"></i> تسهيل تأشيرة العمرة</li>
+            <li class="unavailable"><i class="fas fa-times-circle"></i> جولات مزارات إضافية</li>
+            <li class="unavailable"><i class="fas fa-times-circle"></i> وجبات يومية</li>
+          </ul>
+          <a href="#booking" class="package-btn" onclick="preselectPackage('الباقة الاقتصادية')">احجز هذه الباقة</a>
+        </div>
+
+        <!-- Card 2: Premium (Featured) -->
+        <div class="package-card featured reveal" style="--i:1">
+          <div class="package-badge">⭐ الأكثر طلباً</div>
+          <div class="package-type-icon mt-6">🕌</div>
+          <div>
+            <div class="package-name">الباقة المميزة</div>
+            <div style="font-size:0.78rem;color:#9ca3af;margin-top:0.2rem;">التوازن المثالي بين الجودة والسعر</div>
+          </div>
+          <div class="package-price">
+            <span class="price-amount">2,100</span>
+            <span class="price-currency">دينار</span>
+            <span class="price-per">/ للفرد</span>
+          </div>
+          <ul class="package-features">
+            <li><i class="fas fa-check-circle"></i> طيران مباشر ذهاباً وإياباً</li>
+            <li><i class="fas fa-check-circle"></i> إقامة 5 نجوم قريبة من الحرم</li>
+            <li><i class="fas fa-check-circle"></i> نقل فاخر مكيّف</li>
+            <li><i class="fas fa-check-circle"></i> إرشاد ديني طوال الرحلة</li>
+            <li><i class="fas fa-check-circle"></i> تسهيل التأشيرة</li>
+            <li><i class="fas fa-check-circle"></i> جولة مزارات إسلامية</li>
+            <li><i class="fas fa-check-circle"></i> إفطار وعشاء يومي</li>
+          </ul>
+          <a href="#booking" class="package-btn" onclick="preselectPackage('الباقة المميزة')">احجز هذه الباقة</a>
+        </div>
+
+        <!-- Card 3: VIP -->
+        <div class="package-card reveal" style="--i:2">
+          <div class="package-type-icon">👑</div>
+          <div>
+            <div class="package-name">باقة VIP</div>
+            <div style="font-size:0.78rem;color:#9ca3af;margin-top:0.2rem;">أرقى مستويات الفخامة والراحة</div>
+          </div>
+          <div class="package-price">
+            <span class="price-amount">3,800</span>
+            <span class="price-currency">دينار</span>
+            <span class="price-per">/ للفرد</span>
+          </div>
+          <ul class="package-features">
+            <li><i class="fas fa-check-circle"></i> درجة أعمال (Business Class)</li>
+            <li><i class="fas fa-check-circle"></i> جناح فندقي 5 نجوم مطل على الحرم</li>
+            <li><i class="fas fa-check-circle"></i> ليموزين خاصة طوال الإقامة</li>
+            <li><i class="fas fa-check-circle"></i> مرشد ديني خاص حصري</li>
+            <li><i class="fas fa-check-circle"></i> تسهيل تأشيرة مميزة</li>
+            <li><i class="fas fa-check-circle"></i> جميع الجولات الدينية</li>
+            <li><i class="fas fa-check-circle"></i> وجبات فاخرة 3 مرات يومياً</li>
+          </ul>
+          <a href="#booking" class="package-btn" onclick="preselectPackage('باقة VIP')">احجز هذه الباقة</a>
+        </div>
+
+      </div>
+
+      <!-- Closing note -->
+      <div class="text-center mt-10 reveal">
+        <p style="font-size:0.85rem; color:#9ca3af;">
+          <i class="fas fa-info-circle" style="color:var(--gold-dark);"></i>
+          جميع الأسعار للفرد — يتم التواصل لتأكيد التفاصيل والتسعير النهائي عبر واتساب
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FEATURES / WHY US
+  ============================================================ -->
+  <section id="features" class="py-20 px-4 sm:px-6" aria-label="لماذا تختارنا">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Section Header -->
+      <div class="text-center mb-12 reveal">
+        <span class="section-eyebrow">لماذا رحاب مكة؟</span>
+        <h2 class="section-title">تجربة <span class="accent">روحية</span> لا تُنسى</h2>
+        <div class="gold-divider"></div>
+      </div>
+
+      <!-- Feature Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 stagger">
+
+        <div class="feature-item reveal" style="--i:0">
+          <div class="feature-icon-wrap"><i class="fas fa-mosque"></i></div>
+          <div>
+            <div class="feature-text-title">فنادق مطلة على الحرم</div>
+            <div class="feature-text-desc">نوفر إقامة فاخرة على مقربة من الحرم المكي والمسجد النبوي لراحتك التامة.</div>
+          </div>
+        </div>
+
+        <div class="feature-item reveal" style="--i:1">
+          <div class="feature-icon-wrap"><i class="fas fa-plane-arrival"></i></div>
+          <div>
+            <div class="feature-text-title">استقبال وتوديع VIP</div>
+            <div class="feature-text-desc">فريقنا يستقبلكم منذ لحظة وصولكم حتى مغادرتكم، بلا أي تعقيدات أو انتظار.</div>
+          </div>
+        </div>
+
+        <div class="feature-item reveal" style="--i:2">
+          <div class="feature-icon-wrap"><i class="fas fa-map-marked-alt"></i></div>
+          <div>
+            <div class="feature-text-title">جولات المزارات الإسلامية</div>
+            <div class="feature-text-desc">نرافقكم في زيارة أبرز المزارات التاريخية الإسلامية بمكة المكرمة والمدينة المنورة.</div>
+          </div>
+        </div>
+
+        <div class="feature-item reveal" style="--i:3">
+          <div class="feature-icon-wrap"><i class="fas fa-quran"></i></div>
+          <div>
+            <div class="feature-text-title">إرشاد ديني متخصص</div>
+            <div class="feature-text-desc">مرشد ديني مؤهل يرافق المجموعة لتعليم المناسك وضمان أداء العمرة بصورة صحيحة.</div>
+          </div>
+        </div>
+
+        <div class="feature-item reveal" style="--i:4">
+          <div class="feature-icon-wrap"><i class="fas fa-bus"></i></div>
+          <div>
+            <div class="feature-text-title">نقل مريح ومنظم</div>
+            <div class="feature-text-desc">حافلات مكيّفة حديثة للتنقل بين مكة والمدينة والمطار وجميع المواقع الدينية.</div>
+          </div>
+        </div>
+
+        <div class="feature-item reveal" style="--i:5">
+          <div class="feature-icon-wrap"><i class="fas fa-file-alt"></i></div>
+          <div>
+            <div class="feature-text-title">تسهيل التأشيرة والإجراءات</div>
+            <div class="feature-text-desc">نتولى كل إجراءات التأشيرة وتصاريح الدخول، فتتفرّغون تماماً للعبادة والروحانية.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       REVIEWS / TESTIMONIALS
+  ============================================================ -->
+  <section id="reviews" class="py-20 px-4 sm:px-6" aria-label="آراء المعتمرين">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Section Header -->
+      <div class="text-center mb-12 reveal">
+        <span class="section-eyebrow">آراء المعتمرين</span>
+        <h2 class="section-title">ماذا قال <span class="accent">معتمرونا</span> عنّا</h2>
+        <div class="gold-divider"></div>
+        <p class="section-subtitle mt-4">تجارب حقيقية من أشخاص أمّوا البيت الحرام برفقتنا.</p>
+      </div>
+
+      <!-- Reviews Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger">
+
+        <!-- Review 1 -->
+        <div class="review-card reveal" style="--i:0">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">
+            تجربة لا تُنسى في حياتي. التنظيم كان رائعاً من البداية للنهاية، والمرشد الديني كان على قدر كبير من العلم والصبر. الفندق كان مطلاً مباشرة على الكعبة، لم أتخيل أنني سأعيش هذه اللحظات.
+          </p>
+          <div>
+            <div class="reviewer-name">محمد الطاهر البشير</div>
+            <div class="reviewer-origin"><i class="fas fa-map-pin" style="font-size:0.7rem;"></i> طرابلس، ليبيا</div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card reveal" style="--i:1">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">
+            سافرنا كعائلة كاملة، 6 أفراد، وكان كل شيء محسوباً ومرتباً بشكل مثالي. البرنامج كان مرناً والفريق تعامل مع أطفالنا بكل محبة. سنتكرر إن شاء الله العام المقبل مع رحاب مكة.
+          </p>
+          <div>
+            <div class="reviewer-name">فاطمة سالم الزروق</div>
+            <div class="reviewer-origin"><i class="fas fa-map-pin" style="font-size:0.7rem;"></i> بنغازي، ليبيا</div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card reveal" style="--i:2">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="review-text">
+            اخترت الباقة المميزة وكانت قيمتها أكثر بكثير من المبلغ المدفوع. المزارات، الفندق، وحرص الفريق على راحتنا كلها أشياء جعلت هذه الرحلة الأفضل في حياتي. شكراً لكم من القلب.
+          </p>
+          <div>
+            <div class="reviewer-name">عمر عبدالسلام المنتصر</div>
+            <div class="reviewer-origin"><i class="fas fa-map-pin" style="font-size:0.7rem;"></i> مصراتة، ليبيا</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       BOOKING FORM
+  ============================================================ -->
+  <section id="booking" class="py-20 px-4 sm:px-6" aria-label="نموذج الحجز">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="flex flex-col lg:flex-row gap-12 items-center">
+
+        <!-- Left: Text Content -->
+        <div class="lg:w-5/12 text-white reveal">
+          <span class="section-eyebrow" style="background:rgba(201,168,76,0.15); border-color:rgba(201,168,76,0.3); color:var(--gold-light);">احجز الآن</span>
+          <h2 class="section-title mt-3" style="color:#fff; font-size: clamp(1.5rem,3.5vw,2.2rem);">
+            ابدأ رحلتك الروحية
+            <span style="color:var(--gold);">اليوم</span>
+          </h2>
+          <p style="color:rgba(255,255,255,0.7); font-size:0.95rem; line-height:1.9; margin-top:1rem; margin-bottom:2rem;">
+            أرسل بياناتك ويتواصل معك أحد مستشارينا عبر واتساب خلال دقائق لتأكيد الحجز وتفاصيل الرحلة.
+          </p>
+
+          <div style="display:flex; flex-direction:column; gap:1rem;">
+            <div style="display:flex; align-items:center; gap:0.75rem; color:rgba(255,255,255,0.75); font-size:0.88rem;">
+              <div style="width:36px;height:36px;background:rgba(201,168,76,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <i class="fas fa-bolt" style="color:var(--gold); font-size:0.8rem;"></i>
+              </div>
+              رد سريع خلال دقائق عبر واتساب
+            </div>
+            <div style="display:flex; align-items:center; gap:0.75rem; color:rgba(255,255,255,0.75); font-size:0.88rem;">
+              <div style="width:36px;height:36px;background:rgba(201,168,76,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <i class="fas fa-lock" style="color:var(--gold); font-size:0.8rem;"></i>
+              </div>
+              بياناتك آمنة ومحمية تماماً
+            </div>
+            <div style="display:flex; align-items:center; gap:0.75rem; color:rgba(255,255,255,0.75); font-size:0.88rem;">
+              <div style="width:36px;height:36px;background:rgba(201,168,76,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <i class="fas fa-hand-holding-heart" style="color:var(--gold); font-size:0.8rem;"></i>
+              </div>
+              لا التزام مالي حتى تؤكد موافقتك
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Booking Form -->
+        <div class="lg:w-7/12 w-full reveal">
+          <div class="form-wrap mx-auto">
+
+            <div class="form-title">نموذج طلب الحجز</div>
+            <div class="form-subtitle">أكمل البيانات أدناه وسنتواصل معك فوراً</div>
+
+            <!-- SUCCESS MESSAGE (shown after submission) -->
+            <div id="formSuccess">
+              <i class="fas fa-check-circle" style="font-size:1.5rem; display:block; margin-bottom:0.5rem;"></i>
+              تم إرسال طلبك بنجاح! جاري تحويلك لواتساب…
+            </div>
+
+            <!--
+              =====================================================
+              BOOKING FORM
+              لربط هذا النموذج بجداول Google Sheets مستقبلاً:
+              1. أنشئ Google Apps Script جديد عبر script.google.com
+              2. اكتب دالة doPost(e) تستقبل البيانات وتكتبها في جدول
+              3. انشر السكربت كـ Web App واحصل على الرابط
+              4. ضع الرابط في المتغير GOOGLE_SHEET_URL أدناه
+              =====================================================
+            -->
+            <form id="bookingForm" novalidate>
+
+              <!-- Full Name -->
+              <div class="form-group">
+                <label class="form-label" for="fullName">
+                  <i class="fas fa-user"></i> الاسم الثلاثي
+                </label>
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  class="form-input"
+                  placeholder="مثال: أحمد محمد الزبيدي"
+                  required
+                />
+              </div>
+
+              <div class="form-grid">
+
+                <!-- WhatsApp Number -->
+                <div class="form-group">
+                  <label class="form-label" for="whatsapp">
+                    <i class="fab fa-whatsapp"></i> رقم الواتساب
+                  </label>
+                  <input
+                    type="tel"
+                    id="whatsapp"
+                    name="whatsapp"
+                    class="form-input"
+                    placeholder="مثال: 0918..."
+                    required
+                    dir="ltr"
+                    style="text-align:right;"
+                  />
+                </div>
+
+                <!-- Number of Persons -->
+                <div class="form-group">
+                  <label class="form-label" for="numPersons">
+                    <i class="fas fa-users"></i> عدد الأفراد
+                  </label>
+                  <select id="numPersons" name="numPersons" class="form-select" required>
+                    <option value="" disabled selected>اختر عدد الأفراد</option>
+                    <option value="1">فرد واحد</option>
+                    <option value="2">فردان (2)</option>
+                    <option value="3">3 أفراد</option>
+                    <option value="4">4 أفراد</option>
+                    <option value="5">5 أفراد</option>
+                    <option value="6+">6 أفراد أو أكثر</option>
+                  </select>
+                </div>
+
+              </div>
+
+              <!-- Package Selection -->
+              <div class="form-group">
+                <label class="form-label" for="packageType">
+                  <i class="fas fa-suitcase"></i> الباقة المطلوبة
+                </label>
+                <select id="packageType" name="packageType" class="form-select" required>
+                  <option value="" disabled selected>اختر الباقة</option>
+                  <option value="الباقة الاقتصادية">الباقة الاقتصادية — 1,200 دينار / فرد</option>
+                  <option value="الباقة المميزة">الباقة المميزة — 2,100 دينار / فرد</option>
+                  <option value="باقة VIP">باقة VIP — 3,800 دينار / فرد</option>
+                  <option value="غير محدد">لم أقرر بعد (أحتاج للاستفسار)</option>
+                </select>
+              </div>
+
+              <!-- Travel Date -->
+              <div class="form-group">
+                <label class="form-label" for="travelDate">
+                  <i class="fas fa-calendar-alt"></i> تاريخ السفر المفضل
+                </label>
+                <input
+                  type="date"
+                  id="travelDate"
+                  name="travelDate"
+                  class="form-input"
+                  required
+                  dir="ltr"
+                  style="text-align:right;"
+                />
+              </div>
+
+              <!-- Error Message -->
+              <div id="formError" style="display:none; background:#fef2f2; border:1px solid #fecaca; border-radius:8px; padding:0.75rem 1rem; color:#dc2626; font-size:0.83rem; margin-bottom:0.8rem;">
+                <i class="fas fa-exclamation-circle"></i>
+                يرجى تعبئة جميع الحقول المطلوبة.
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="submit-btn">
+                <i class="fab fa-whatsapp" style="font-size:1.2rem;"></i>
+                إرسال الطلب عبر واتساب
+              </button>
+
+            </form>
+
+            <div class="form-note">
+              <i class="fas fa-lock" style="font-size:0.7rem;"></i>
+              بياناتك آمنة ولن تُشارك مع أي طرف ثالث.
+              <br/>سيتواصل معكم مستشارنا خلال ساعات العمل.
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="footer" class="py-12 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="flex flex-col md:flex-row justify-between items-start gap-8 pb-8 border-b border-gray-800">
+
+        <!-- Brand -->
+        <div>
+          <div class="footer-logo-text">رحاب <span>مكة</span></div>
+          <p style="font-size:0.82rem; margin-top:0.6rem; max-width:260px; line-height:1.8; color:#6b7280;">
+            نُيسّر عليك رحلتك إلى بيت الله الحرام بأعلى معايير الجودة والرعاية.
+          </p>
+          <!-- Social -->
+          <div style="display:flex; gap:0.6rem; margin-top:1rem;">
+            <a href="https://wa.me/00218915072015" target="_blank" class="social-btn" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="social-btn" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-btn" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-btn" aria-label="تيكتوك"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div class="flex gap-12">
+          <div>
+            <div style="font-size:0.8rem; font-weight:700; color:#fff; margin-bottom:0.75rem; letter-spacing:0.05em;">روابط سريعة</div>
+            <div style="display:flex; flex-direction:column; gap:0.5rem;">
+              <a href="#packages" class="footer-link">الباقات</a>
+              <a href="#features" class="footer-link">مميزاتنا</a>
+              <a href="#reviews" class="footer-link">آراء المعتمرين</a>
+              <a href="#booking" class="footer-link">احجز الآن</a>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:0.8rem; font-weight:700; color:#fff; margin-bottom:0.75rem; letter-spacing:0.05em;">تواصل معنا</div>
+            <div style="display:flex; flex-direction:column; gap:0.5rem;">
+              <a href="https://wa.me/00218915072015" target="_blank" class="footer-link" dir="ltr" style="text-align:right;">+218 91 507 2015</a>
+              <a href="mailto:info@rehab-makkah.com" class="footer-link">info@rehab-makkah.com</a>
+              <span style="font-size:0.82rem; color:#4b5563;">طرابلس، ليبيا</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="padding-top:1.5rem; display:flex; flex-wrap:wrap; justify-content:space-between; gap:0.75rem; align-items:center;">
+        <span style="font-size:0.75rem; color:#4b5563;">
+          © 2025 رحاب مكة — جميع الحقوق محفوظة
+        </span>
+        <span style="font-size:0.75rem; color:#4b5563; display:flex; align-items:center; gap:0.35rem;">
+          <i class="fas fa-certificate" style="color:var(--gold); font-size:0.7rem;"></i>
+          مرخصون من وزارة الحج والعمرة
+        </span>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // ================================================
+    // 1. NAVBAR: Add 'scrolled' class on scroll
+    // ================================================
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+
+    // ================================================
+    // 2. SCROLL REVEAL ANIMATION
+    // ================================================
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      // Stagger siblings
+      const parent = el.parentElement;
+      if (parent && parent.classList.contains('stagger')) {
+        el.style.transitionDelay = (i % 6) * 100 + 'ms';
+      }
+      revealObserver.observe(el);
+    });
+
+
+    // ================================================
+    // 3. PRESELECT PACKAGE from card buttons
+    // ================================================
+    function preselectPackage(packageName) {
+      const select = document.getElementById('packageType');
+      if (!select) return;
+      for (let i = 0; i < select.options.length; i++) {
+        if (select.options[i].value === packageName) {
+          select.selectedIndex = i;
+          break;
+        }
+      }
+      // Smooth scroll to booking
+      document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+
+    // ================================================
+    // 4. BOOKING FORM — WhatsApp Submission
+    //
+    // رقم الواتساب المستهدف: 00218915072015
+    //
+    // لربط النموذج بـ Google Sheets مستقبلاً:
+    // أ) أنشئ Google Apps Script من: https://script.google.com
+    // ب) استخدم كود doPost() لكتابة البيانات في Google Sheet
+    // ج) انشر السكربت كـ "Web App" (تنفيذ من أي شخص)
+    // د) ضع رابط الـ Web App في المتغير GOOGLE_SHEET_URL أدناه
+    // ================================================
+    const GOOGLE_SHEET_URL = ''; // ← ضع رابط Google Apps Script هنا
+
+    document.getElementById('bookingForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // --- Collect form values ---
+      const fullName   = document.getElementById('fullName').value.trim();
+      const whatsapp   = document.getElementById('whatsapp').value.trim();
+      const numPersons = document.getElementById('numPersons').value;
+      const packageType = document.getElementById('packageType').value;
+      const travelDate  = document.getElementById('travelDate').value;
+
+      // --- Validation ---
+      const errorDiv = document.getElementById('formError');
+      if (!fullName || !whatsapp || !numPersons || !packageType || !travelDate) {
+        errorDiv.style.display = 'block';
+        return;
+      }
+      errorDiv.style.display = 'none';
+
+      // --- Format travel date nicely ---
+      let formattedDate = travelDate;
+      try {
+        const d = new Date(travelDate);
+        formattedDate = d.toLocaleDateString('ar-LY', { year: 'numeric', month: 'long', day: 'numeric' });
+      } catch (_) {}
+
+      // --- Compose WhatsApp message ---
+      const msg = [
+        '🕌 *طلب حجز جديد — رحاب مكة*',
+        '━━━━━━━━━━━━━━━━━━',
+        `👤 *الاسم:* ${fullName}`,
+        `📞 *رقم الواتساب:* ${whatsapp}`,
+        `📦 *الباقة المختارة:* ${packageType}`,
+        `🗓️ *تاريخ السفر المفضل:* ${formattedDate}`,
+        `👥 *عدد الأفراد:* ${numPersons}`,
+        '━━━━━━━━━━━━━━━━━━',
+        '✅ _أرجو التواصل لتأكيد الحجز وتفاصيل الرحلة. جزاكم الله خيراً._'
+      ].join('\n');
+
+      const encodedMsg = encodeURIComponent(msg);
+      const whatsappURL = `https://wa.me/00218915072015?text=${encodedMsg}`;
+
+      // --- Optional: Send to Google Sheets ---
+      // إذا كان GOOGLE_SHEET_URL محدداً، يتم إرسال البيانات إليه أولاً
+      if (GOOGLE_SHEET_URL) {
+        const payload = { fullName, whatsapp, numPersons, packageType, travelDate };
+        fetch(GOOGLE_SHEET_URL, {
+          method: 'POST',
+          mode: 'no-cors', // Google Apps Script يتطلب هذا
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).catch(err => console.warn('Google Sheets error:', err));
+      }
+
+      // --- Show success message briefly, then redirect ---
+      const successDiv = document.getElementById('formSuccess');
+      const form = document.getElementById('bookingForm');
+      form.style.display = 'none';
+      successDiv.style.display = 'block';
+
+      setTimeout(() => {
+        window.open(whatsappURL, '_blank');
+      }, 900);
+
+      // Reset after 5 seconds (optional UX improvement)
+      setTimeout(() => {
+        form.reset();
+        form.style.display = 'block';
+        successDiv.style.display = 'none';
+      }, 5000);
+    });
+
+
+    // ================================================
+    // 5. Set minimum date to today for travel date
+    // ================================================
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('travelDate').setAttribute('min', today);
+
+
+    // ================================================
+    // 6. Smooth anchor scroll (override default jump)
+    // ================================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 72; // navbar height
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+  </script>
+
+</body>
+</html>
