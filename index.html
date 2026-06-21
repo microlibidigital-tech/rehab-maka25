@@ -829,7 +829,7 @@
   <!-- ============================================================
        FLOATING WHATSAPP BUTTON
   ============================================================ -->
-  <a href="https://wa.me/00218915072015" target="_blank" class="wa-float" aria-label="تواصل عبر واتساب">
+  <a href="https://wa.me/218915072015" target="_blank" class="wa-float" aria-label="تواصل عبر واتساب">
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -1394,7 +1394,7 @@
           </p>
           <!-- Social -->
           <div style="display:flex; gap:0.6rem; margin-top:1rem;">
-            <a href="https://wa.me/00218915072015" target="_blank" class="social-btn" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/218915072015" target="_blank" class="social-btn" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
             <a href="#" class="social-btn" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="social-btn" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
             <a href="#" class="social-btn" aria-label="تيكتوك"><i class="fab fa-tiktok"></i></a>
@@ -1501,7 +1501,7 @@
     // ج) انشر السكربت كـ "Web App" (تنفيذ من أي شخص)
     // د) ضع رابط الـ Web App في المتغير GOOGLE_SHEET_URL أدناه
     // ================================================
-    const GOOGLE_SHEET_URL = ''; // ← ضع رابط Google Apps Script هنا
+    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbw4_gLGz2K0iUqz1c_K-0IiOpkXftf-RzXlgnAdCHxU8D3_5muz41M5eeVbFkyWfeln/exec'; // ← ضع رابط Google Apps Script هنا
 
     document.getElementById('bookingForm').addEventListener('submit', function (e) {
       e.preventDefault();
@@ -1542,7 +1542,7 @@
       ].join('\n');
 
       const encodedMsg = encodeURIComponent(msg);
-      const whatsappURL = `https://wa.me/00218915072015?text=${encodedMsg}`;
+      const whatsappURL = `https://wa.me/218915072015?text=${encodedMsg}`;
 
       // --- Optional: Send to Google Sheets ---
       // إذا كان GOOGLE_SHEET_URL محدداً، يتم إرسال البيانات إليه أولاً
